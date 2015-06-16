@@ -20,7 +20,7 @@ var basicThings = [
   [1],
   [0, 0],
   [0, 1],
-  [1, 0],
+  //[1, 0], expect true
   "a", {
     a: 0
   }, {
@@ -146,6 +146,34 @@ describe('json-assert', function() {
 
       check(expected, actual, false);
 
+    });
+
+    it("test numbers", function(){
+        check([1,2,3],[2,1,3],true);
+    });
+
+    it("test non-object", function(){
+        check([1,2,'a'],[2,'a',1],true);
+    });
+
+    it("test empty array",function(){
+      check([],[],true);
+    });
+
+    it("test empty object",function(){
+        check({},{},true)
+    });
+
+    it("test empty object array",function(){
+        check([{}],[{}],true);
+    });
+
+    it("test obejct array",function(){
+        check({c:[{b:""},{a:""}]},{c:[{a:""},{b:""}]},true);
+    });
+
+    it("test complex obejct",function(){
+        check({c:[{b:""},3]},{c:[{b:""},4]},false);
     });
 
   });

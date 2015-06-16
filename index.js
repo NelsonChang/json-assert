@@ -79,9 +79,24 @@ exports.isEqual = function(src, dst, silence) {
         return failTest("source and dest have different lengths in " + name);
       }
 
-      len = src.length;
+      var sortedSrc;
+      var sortedDst;
+
+      if(_.isObject(src[0])&& _.isObject(dst[0])){
+        if(_.isEmpty(Object.keys(src[0])[0]) && _.isEmpty(Object.keys(dst[0])[0])){
+          return true;
+        }
+        sortedSrc = _.sortBy(src, Object.keys(src[0])[0]);
+        sortedDst = _.sortBy(dst, Object.keys(src[0])[0]);
+      }
+      else{
+        sortedSrc = src.sort();
+        sortedDst = dst.sort();
+      }
+
+      len = sortedSrc.length;
       for (i = 0; i < len; i++) {
-        res = innerCheck(name + "[" + i + "]", src[i], dst[i]);
+        res = innerCheck(name + "[" + i + "]", sortedSrc[i], sortedDst[i]);
         if (!res) {
           return false;
         }
