@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/5app/json-assert.git"
+    "url": "https://github.com/NelsonChang/json-assert.git"
   },
   "keywords": [
     "json",
@@ -18,7 +18,7 @@
   "author": "James Brooks <kerspoon@gmail.com> (http://5app.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/5app/json-assert/issues"
+    "url": "https://github.com/NelsonChang/json-assert/issues"
   },
   "devDependencies": {
     "mocha": "^2.2.1"
