@@ -28,6 +28,7 @@ The difference between this and [JSON schema](http://json-schema.org/) is that j
     // basic things must match
     ja.isEqual({ a: 3}, { b: 4}); // false
     ja.isEqual({ a: 3}, { a: 3}); // true
+    ja.isEqual({ a:[{ b: 4}, { c: 5}]},{a:[{ c: 5}, { b: 4}]}); //true
 
     // we don't care what the value is as long as it exists.
     ja.isEqual({ a: ja.dontCare }, { a: 3}); // true
