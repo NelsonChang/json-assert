@@ -175,6 +175,16 @@ describe('json-assert', function() {
     it("test complex obejct",function(){
         check({c:[{b:""},3]},{c:[{b:""},4]},false);
     });
+    it("test ownDefined function: case-insensitive", function(){
+      check({a:jsonAssert.ownDefined("ABC", function(){
+        return arguments[0].toLowerCase() == arguments[1].toLowerCase();
+      })},{a:"abc"},true);
+    });
 
+    it("test ownDefined function: time format", function(){
+      check({a:jsonAssert.ownDefined('2015-01-01T00:00:00',function(){
+        return (new Date(arguments[0]).getTime() == new Date(arguments[1]).getTime());
+      })},{a:"2015-01-01T00:00:00.000Z"},true);
+    });
   });
 });

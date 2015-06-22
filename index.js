@@ -2,6 +2,11 @@
 /* jshint node:true */
 
 var _ = require('underscore');
+exports.ownDefined = function(src,func){
+  return function(keyName, returnValue){
+    return func(src, returnValue);
+  };
+};
 
 exports.dontCare = function(keyName, returnValue) {
   // we only care that it exists.
