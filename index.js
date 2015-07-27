@@ -91,8 +91,8 @@ exports.isEqual = function(src, dst, silence) {
         if(_.isEmpty(Object.keys(src[0])[0]) && _.isEmpty(Object.keys(dst[0])[0])){
           return true;
         }
-        sortedSrc = _.sortBy(src, Object.keys(src[0])[0]);
-        sortedDst = _.sortBy(dst, Object.keys(src[0])[0]);
+        sortedSrc = _.sortBy(src, 'ListingID');
+        sortedDst = _.sortBy(dst, 'ListingID');
       }
       else{
         sortedSrc = src.sort();
